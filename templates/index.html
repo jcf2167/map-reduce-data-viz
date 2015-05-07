@@ -23,7 +23,7 @@
         svg {
             display: block;
             float: left;
-            height: 550px;
+            height: 500px;
             width: 400px;
         }
         html, body {
@@ -134,9 +134,9 @@
 <script>
 var strData = '{{ results|safe }}';
 var data = JSON.parse(strData);
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 350 - margin.left - margin.right,
-    height = 550 - margin.top - margin.bottom;
+var margin = {top: 50, right: 50, bottom: 30, left: 50},
+    width = 400 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 var parseDate = d3.time.format("%Y-%m-%dT%H").parse,
     formatPercent = d3.format(".0%");
 var x = d3.time.scale()
@@ -187,7 +187,9 @@ sentiment.append("text")
     .attr("x", -6).attr("dy", ".35em").text(function(d) { return d.name; });
 svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + height + ")").call(xAxis);
 svg.append("g").attr("class", "y axis").call(yAxis);
-
+var title = "Obama Sentiment: Time Trend";
+svg.append("text").attr("x", (width / 2)).attr("y", 0 - (margin.top / 2))
+    .attr("text-anchor", "middle").style("font-size", "16px").text(title);
 </script>
 </body>
   <!-- END BODY -->
